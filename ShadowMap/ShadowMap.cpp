@@ -717,6 +717,7 @@ void RenderScene( IDirect3DDevice9* pd3dDevice, bool bRenderShadow, float fElaps
 		// Update the light parameters in the effect
 		if( g_bFreeLight )
 		{
+			// test
 			// Freely moveable light. Get light parameter
 			// from the light camera.
 			D3DXVECTOR3 v = *g_LCamera.GetEyePt();
@@ -903,8 +904,8 @@ void CALLBACK OnFrameRender( IDirect3DDevice9* pd3dDevice, double fTime, float f
 	if( g_ShadowType == PERSPECTIVE )
 	{	//PSM
 		D3DXMATRIXA16 matEyeView_EyeProjection_LightView;		
-		D3DXMatrixMultiply(&matEyeView_EyeProjection_LightView, g_VCamera.GetViewMatrix(), g_VCamera.GetProjMatrix());	//Ä«¸Þ¶ó ºä * Ä«¸Þ¶ó Åõ¿µ
-		D3DXMatrixMultiply(&matEyeView_EyeProjection_LightView, &matEyeView_EyeProjection_LightView, &mLightView );	//Ä«¸Þ¶ó ºä * Ä«¸Þ¶ó Åõ¿µ* ±¤¿ø ºä		
+		D3DXMatrixMultiply(&matEyeView_EyeProjection_LightView, g_VCamera.GetViewMatrix(), g_VCamera.GetProjMatrix());	//Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ * Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ï¿½ï¿½
+		D3DXMatrixMultiply(&matEyeView_EyeProjection_LightView, &matEyeView_EyeProjection_LightView, &mLightView );	//Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ * Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ï¿½ï¿½* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½		
 		matShadowView = matEyeView_EyeProjection_LightView;
 
 	}
@@ -941,10 +942,10 @@ void CALLBACK OnFrameRender( IDirect3DDevice9* pd3dDevice, double fTime, float f
 
 
 	if( g_ShadowType == PERSPECTIVE )
-	{	//mViewToLightProj¿¡´Â ÀÌ¹Ì Ä«¸Þ¶ó view°¡ Æ÷ÇÔµÇ¾îÀÖ´Ù
+	{	//mViewToLightProjï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ Ä«ï¿½Þ¶ï¿½ viewï¿½ï¿½ ï¿½ï¿½ï¿½ÔµÇ¾ï¿½ï¿½Ö´ï¿½
 		D3DXMatrixInverse( &mViewToLightProj, NULL, &mViewToLightProj );
-		D3DXMatrixMultiply(&mViewToLightProj, &mViewToLightProj, g_VCamera.GetProjMatrix());	//Ä«¸Þ¶ó ºä * Ä«¸Þ¶ó Åõ¿µ
-		D3DXMatrixMultiply(&mViewToLightProj, &mViewToLightProj, &mLightView );		//Ä«¸Þ¶ó ºä * Ä«¸Þ¶ó Åõ¿µ* ±¤¿ø ºä		
+		D3DXMatrixMultiply(&mViewToLightProj, &mViewToLightProj, g_VCamera.GetProjMatrix());	//Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ * Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ï¿½ï¿½
+		D3DXMatrixMultiply(&mViewToLightProj, &mViewToLightProj, &mLightView );		//Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ * Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ï¿½ï¿½* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½		
 		D3DXMatrixMultiply( &mViewToLightProj, &mViewToLightProj, &g_mShadowProj );
 	}
 	else
